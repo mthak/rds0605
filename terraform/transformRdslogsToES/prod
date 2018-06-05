@@ -1,0 +1,30 @@
+component = "databasereporting"
+
+environment = "ES_DOMAIN"
+
+s3_environment = "S3_BUCKET"
+
+esdomain = "https://vpc-logcentral-prod-6-0-d7urjpu4ieth5mciud5x5fl664.us-east-1.es.amazonaws.com"
+
+cloud_watch_logs_role_arn = "arn:aws:lambda:us-east-1:476083617163:function:continuous-audit-cloudtrail-processor"
+
+cloudtrail_name = "SendToCloudTrailLambdaNonProd"
+
+id = "TransformRdsLogsToElasticSearchForProd"
+
+name = "jdf-ops-transform-rds-logs-to-es-tf"
+
+event_name = "jdf-ops-ship-RDS-logs-to-jdfOpsShipRdsLogsToS3Shi-1FNW7JVV5D0YX"
+
+//rdslogs3bucket = "rds-logs-aggregation-prod"
+
+s3_name = "aws-jdf-ship-rds-logs-to-s3-tf"
+
+subnet_ids = ["subnet-1abf2536", "subnet-177fed4d", "subnet-e24f46de"]
+
+security_group_ids = "sg-1a56066d"
+
+vpc = "vpc-bddeb2c4"
+
+lambda_function_arn = "arn:aws:lambda:us-east-1:476083617163:function:jdf-ops-transform-rds-logs-to-es-tf"
+
