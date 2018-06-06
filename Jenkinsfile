@@ -25,11 +25,11 @@ pipeline {
                             localDir : "shipRdsLogsToS3",
                             extension: "*.py",
                             language : "python",
-                            zipfile  : "Rds_to_S3-${env.commit}.zip",
+                            zipfile  : "Rds_to_S3-${env.GIT_COMMIT}.zip",
                             stashName: "shipRdsLogsToS3"])
                     lambdas.put("transformRdsLogsToES", [
                             localDir : "transformRdsLogsToES",
-                            zipfile  : "s3-to-es-${env.commit}.zip",
+                            zipfile  : "s3-to-es-${env.GIT_COMMIT}.zip",
                             language : "node",
                             extension: "*.js",
                             stashName: "transformRdsLogsToES"])
@@ -111,7 +111,7 @@ pipeline {
                         parallelSteps.put(it.key, {
                             echo "Running for ${it.key}"
 
-                            def tfParameters = "-var-file=${it.key} -var git_url=${env.GIT_URL}, -var git_commit=${env.commit} -var s3_bucket=${it.value.s3Bucket} -var s3_path=${s3SubFolder}"
+                            def tfParameters = "-var-file=${it.key} -var git_url=${env.GIT_URL}, -var git_commit=${env.GIT_COMMIT} -var s3_bucket=${it.value.s3Bucket} -var s3_path=${s3SubFolder}"
                             terraformPlanAndApply(it.key, "latest", tfParameters)
                         })
                     }
